@@ -1,10 +1,29 @@
 <ion-header>
-  <ion-navbar color="danger">
-    <ion-
-    <ion-title class="title">Home</ion-title>
+  <ion-navbar class="navbar" color="danger"> 
+    <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  
+<ion-content padding scrolling="no">
+  <div *ngIf = "!loggedIn">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input [(ngModel)]="email" type="email" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button outline color= "danger" center (click)="login()" >Sign In</button>
+
+  </div>
+  <div *ngIf="loggedIn">
+    Sir, You are already logged in.<br>
+    Please go to the shopping area.
+  </div>
 </ion-content>

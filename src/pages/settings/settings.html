@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title> Settings </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>Theme</ion-label>
+            <ion-select [(ngModel)]="theme">
+                <ion-option value="danger">Red</ion-option>
+                <ion-option value="secondery">Green</ion-option>
+                <ion-option value="primary">Blue</ion-option>
+                <ion-option value="dark">Black</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+    <button ion-button block color="danger" (click)='changeSettings()'>Save Changes</button>
+</ion-content>
