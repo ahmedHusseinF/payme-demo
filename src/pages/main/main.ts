@@ -13,7 +13,7 @@ import { SettingsPage } from '../settings/settings';
 export class MainPage {
     loggedIn: boolean;
     inSearch: boolean = false;
-    searched: any[];
+    searched: any = [];
     loading: any;
     items: any = {
       merchants: [],
@@ -41,7 +41,9 @@ export class MainPage {
   }
 
   goToSettings(){
-    this.navCtrl.push(SettingsPage);
+    this.navCtrl.push(SettingsPage,{},{
+      direction: 'forward'
+    });
   }
 
   private showLoading(){
@@ -61,6 +63,8 @@ export class MainPage {
                 //console.log(res);
                 this.items = res;
                 this.findCategories();
+                console.log(this.items,"64");
+                console.log(this.categories,"65");
                 //console.log(this.items);
             });
         });
@@ -69,7 +73,7 @@ export class MainPage {
           let long = pos.coords.longitude;
           this.fetch.getLocation(lat, long).subscribe((res)=>{
             if(res.status == "OK"){
-              console.log(res);
+              //console.log(res);
               this.location = res.results[0].address_components[3].long_name + ", " + res.results[0].address_components[4].long_name;
             }
           });
@@ -96,25 +100,29 @@ export class MainPage {
     this.navCtrl.push(DetailsPage,{
       products: this.items.products,
       cat: cat
-    })
+    },{
+      direction:'forward'
+    });
   }
   
   getItems(ev){
-    console.log(ev.target.value);
     if(ev.target.value == ''){
       this.inSearch = false;
     }else{
       this.inSearch = true;
+      this.searched = [];
       for(let product of this.items.products){
-        if(product.title.include(ev.target.value)){
+        if(product.title.includes(ev.target.value)){
           this.searched.push(product);
         }
       }
+      //console.log(this.searched,"first");
       for(let merchant of this.items.merchants){
-        if(merchant.name.include(ev.target.value)){
+        if(merchant.name.includes(ev.target.value)){
           this.searched.push(merchant);
         }
       }
+      //console.log(this.searched,"second");
     }
   }
 }

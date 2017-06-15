@@ -19,7 +19,7 @@
   <ion-item color="danger"><h1>{{location}}</h1></ion-item>
   <!--(ionInput)="getItems($event)"-->
   <ion-item color="danger">
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search for products, services etc." color="danger"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" (ionClear)="getItems('')" placeholder="Search for products, merchants etc." color="danger"></ion-searchbar>
   </ion-item>
 </ion-header>
 
@@ -32,6 +32,7 @@
   </div>
   <div *ngIf="loggedIn">
     <div *ngIf="!inSearch">
+      <br>
       <h3>Browse By Categories</h3>
 
         <ion-scroll scrollX="true" class="cat">
@@ -59,11 +60,13 @@
 
       <div *ngIf="inSearch">
         <ion-list>
-          <ion-item ng-repeat="thing in searched">
+          <ion-item *ngFor="let thing of searched">
             <ion-thumbnail item-start>
-              <img src="thing.image || thing.logo">
+              <img *ngIf="thing.image" src="{{thing.image}}">
+              <img *ngIf="thing.logo" src="{{thing.logo}}">
             </ion-thumbnail>
-            <h2>{{thing.name || thing.title}}</h2>
+            <h2 *ngIf="thing.name">{{thing.name}}</h2>
+            <h2 *ngIf="thing.title">{{thing.title}}</h2>
             <p>{{thing.description}}</p>
           </ion-item>
         </ion-list>
