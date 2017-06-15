@@ -18,12 +18,18 @@
       </ion-item>
 
     </ion-list>
-
-    <button ion-button outline color= "danger" center (click)="login()" >Sign In</button>
-
+    <div class="row">
+      <div class="col">
+        <button ion-button outline color= "danger" center (click)="login()" >Sign In</button>
+      </div>
+   </div>
   </div>
   <div *ngIf="loggedIn">
-    Sir, You are already logged in.<br>
-    Please go to the shopping area.
+    
+      <pre>
+        Sir, You are already logged in.
+        Please go to the Main Area.
+      </pre>
+    
   </div>
 </ion-content>

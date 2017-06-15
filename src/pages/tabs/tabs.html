@@ -1,10 +1,11 @@
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Login" tabIcon="log-in"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Main" tabIcon="md-apps"></ion-tab>
-
-  <button ion-button large color="danger" class="addbtn">
-    <ion-icon name="add"></ion-icon>
-  </button>
+  <ion-fab bottom center>
+    <button ion-fab color="danger" >
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
   <ion-tab [root]="tab3Root" tabTitle="Settings" tabIcon="construct"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="About" tabIcon="md-information-circle"></ion-tab>

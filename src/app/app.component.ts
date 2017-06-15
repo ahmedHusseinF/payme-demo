@@ -5,10 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { authService } from './services/auth.service';
+import { fetchService } from './services/fetch.service';
 @Component({
   templateUrl: 'app.html',
   providers:[
-    authService
+    authService,
+    fetchService
   ]
 })
 export class MyApp {

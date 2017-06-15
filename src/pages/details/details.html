@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title> {{cat}} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let product of products">
+        <ion-card>
+          <img *ngIf="product.image != null" src="{{product.image}}">
+          <ion-card-content>
+            <ion-card-title>{{product.title}}</ion-card-title>
+            <p>{{product.description}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>  
+</ion-content>
