@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { authService } from '../../app/services/auth.service';
-import { MainPage } from '../main/main';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-home',
@@ -9,19 +8,24 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
   loggedIn: boolean;
+  err: string;
   email: string;
   password: string;
-  constructor(public navCtrl: NavController, private authservice:authService , private storage: Storage) {
+  constructor(public navCtrl: NavController, public authservice:authService , private storage: Storage) {
     this.loggedIn = false;
+    this.err = '';
   }
 
   login(){
       this.authservice.authAPI(this.email,this.password)
-      .subscribe(res => {
-        console.log(res);
-        //this.storage.set('token',res.token);
-        this.loggedIn = true;
-        //this.navCtrl.push(MainPage);
+      .subscribe((res) => {
+        if(res.Rcode == 200){
+          this.storage.set('token',res.User.token);
+          //localStorage.setItem('token',res.User.token)
+          this.loggedIn = true;
+        }else {
+          this.err = res.Message;
+        }
       });
   }
 

@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class authService{
     http: any;
+    data: any;
     baseUrl: string;
     constructor( http:Http){
         this.http = http;
@@ -16,8 +17,7 @@ export class authService{
         let options = new RequestOptions({headers});
         return this.http.post(this.baseUrl + "email=" + email + "&password=" + password, {}, options)
         .map((res) => {
-            console.log(res.json());
-            res.json();
+            return res.json();
         });
     }
 } 

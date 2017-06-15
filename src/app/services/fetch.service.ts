@@ -13,9 +13,10 @@ export class fetchService{
     }
 
     fetch(token){
+        //console.log(token);
         return this.http.post(this.baseUrl + "token=" + token)
         .map((res) => {
-            res.json();
+            return res.json();
         });
     }
     
