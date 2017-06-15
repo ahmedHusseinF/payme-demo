@@ -2,7 +2,7 @@
   <ion-navbar color="danger">
 
     <ion-fab top left>
-      <button ion-button clear color="light">
+      <button ion-button clear color="light" (click)="goToSettings()">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-fab>
@@ -15,46 +15,59 @@
       </button>
     </ion-fab>
   </ion-navbar>
-  <ion-item color="danger" id="location">
-    <ion-select [(ngModel)]="location" color="danger">
-      <ion-option value="egypt" selected>Egypt</ion-option>
-      <ion-option value="saudi">Saudi Arabia</ion-option>
-      <ion-option value="lebanon">Lebanon</ion-option>
-      <ion-option value="kuwait">Kuwait</ion-option>
-    </ion-select>
-  </ion-item>
-  <!--<ion-item color="danger"><h1>Cairo, Egypt</h1></ion-item>-->
+  
+  <ion-item color="danger"><h1>{{location}}</h1></ion-item>
   <!--(ionInput)="getItems($event)"-->
   <ion-item color="danger">
-    <ion-searchbar  placeholder="Search for products, services etc." color="danger"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search for products, services etc." color="danger"></ion-searchbar>
   </ion-item>
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="!loggedIn">
+    <pre>
+      Sir, please go to the login page first and login. 
+      Then come back here for the content to show
+    </pre>
+  </div>
+  <div *ngIf="loggedIn">
+    <div *ngIf="!inSearch">
+      <h3>Browse By Categories</h3>
 
- <h3>Browse By Categories</h3>
+        <ion-scroll scrollX="true" class="cat">
+          <ion-row>
+            <ion-col *ngFor="let cat of categories">
+              <p (click)="viewProducts(cat)">{{cat}}</p> <!-- can be a link to another page containing all products of this category -->
+            </ion-col>
+          </ion-row>
 
-  <ion-scroll scrollX="true" class="cat">
-    <ion-row>
-      <ion-col *ngFor="let cat of categories">
-        <p (click)="viewProducts(cat)">{{cat}}</p> <!-- can be a link to another page containing all products of this category -->
-      </ion-col>
-    </ion-row>
+          <p>Featured Items</p>
+          <ion-row>
+            <ion-col *ngFor="let prom of items.promotions">
+              <ion-card>
+                <img src="{{prom.image}}">
+                <ion-card-content>
+                  <ion-card-title>{{prom.title}}</ion-card-title>
+                  <p>{{prom.description}}</p>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-scroll>
+      </div>
 
-    <p>Featured Items</p>
-    <ion-row>
-      <ion-col *ngFor="let prom of items.promotions">
-        <ion-card>
-          <img src="{{prom.image}}">
-          <ion-card-content>
-            <ion-card-title>{{prom.title}}</ion-card-title>
-            <p>{{prom.description}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-scroll>
 
-  
+      <div *ngIf="inSearch">
+        <ion-list>
+          <ion-item ng-repeat="thing in searched">
+            <ion-thumbnail item-start>
+              <img src="thing.image || thing.logo">
+            </ion-thumbnail>
+            <h2>{{thing.name || thing.title}}</h2>
+            <p>{{thing.description}}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+  </div>
 
 </ion-content>

@@ -21,7 +21,7 @@ export class HomePage {
       .subscribe((res) => {
         if(res.Rcode == 200){
           this.storage.set('token',res.User.token);
-          //localStorage.setItem('token',res.User.token)
+          this.storage.set('loggedIn',true);
           this.loggedIn = true;
         }else {
           this.err = res.Message;
