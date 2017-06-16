@@ -15,7 +15,7 @@
       </button>
     </ion-fab>
   </ion-navbar>
-  
+
   <ion-item color="danger"><h1>{{location}}</h1></ion-item>
   <!--(ionInput)="getItems($event)"-->
   <ion-item color="danger">
@@ -23,10 +23,10 @@
   </ion-item>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding overflow-scroll="true">
   <div *ngIf="!loggedIn">
     <pre>
-      Sir, please go to the login page first and login. 
+      Sir, please go to the login page first and login.
       Then come back here for the content to show
     </pre>
   </div>
