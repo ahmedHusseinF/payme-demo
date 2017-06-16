@@ -13,6 +13,7 @@ export class HomePage {
   password: string;
   constructor(public navCtrl: NavController, public authservice:authService , private storage: Storage) {
     this.loggedIn = false;
+    this.storage.set('loggedIn',false);
     this.err = '';
   }
 

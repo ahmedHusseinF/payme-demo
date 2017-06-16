@@ -11,7 +11,7 @@ import { SettingsPage } from '../settings/settings';
   templateUrl: 'main.html'
 })
 export class MainPage {
-    loggedIn: boolean;
+    loggedIn: boolean = false;
     inSearch: boolean = false;
     searched: any = [];
     loading: any;
@@ -24,20 +24,31 @@ export class MainPage {
     location: string;
     categories: any[];
   constructor(public navCtrl: NavController, private fetch: fetchService,public storage: Storage, public loadingctrl: LoadingController, private geo: Geolocation) {
-    setTimeout(()=>{
-      this.storage.get('loggedIn').then((val)=>{
-      this.loggedIn = val;
+    this.geo.getCurrentPosition().then((pos)=>{
+        let lat = pos.coords.latitude;
+        let long = pos.coords.longitude;
+        this.fetch.getLocation(lat, long).subscribe((res)=>{
+          if(res.status == "OK"){
+            //console.log(res);
+             this.location = res.results[0].address_components[3].long_name + ", " + res.results[0].address_components[4].long_name;
+          }
+        });
     });
-    },1000);
   }
 
   ionViewWillEnter(){
-    if(!this.loggedIn){
-      this.showLoading();
-      this.loggedIn = true;
-    }else{
-      return;
-    }
+
+    this.storage.get('loggedIn').then((val)=>{
+      this.loggedIn = val;
+    });
+    setTimeout(()=>{
+      if(this.loggedIn){
+        this.showLoading();
+        this.loggedIn = true;
+      }else{
+       return;
+      }
+    },500);
   }
 
   goToSettings(){
@@ -68,17 +79,7 @@ export class MainPage {
                 //console.log(this.items);
             });
         });
-        this.geo.getCurrentPosition().then((pos)=>{
-          let lat = pos.coords.latitude;
-          let long = pos.coords.longitude;
-          this.fetch.getLocation(lat, long).subscribe((res)=>{
-            if(res.status == "OK"){
-              //console.log(res);
-              this.location = res.results[0].address_components[3].long_name + ", " + res.results[0].address_components[4].long_name;
-            }
-          });
-        });
-        
+
         this.hideLoading();
     },3000);
   }
@@ -104,7 +105,7 @@ export class MainPage {
       direction:'forward'
     });
   }
-  
+
   getItems(ev){
     if(ev.target.value == ''){
       this.inSearch = false;
