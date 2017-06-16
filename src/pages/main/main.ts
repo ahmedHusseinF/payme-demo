@@ -52,7 +52,7 @@ export class MainPage {
   }
 
   goToSettings(){
-    this.navCtrl.push(SettingsPage,{},{
+    this.navCtrl.insert(1,SettingsPage,{},{
       direction: 'forward'
     });
   }
@@ -98,7 +98,7 @@ export class MainPage {
   }
 
   viewProducts(cat){    //complete
-    this.navCtrl.push(DetailsPage,{
+    this.navCtrl.insert(1,DetailsPage,{
       products: this.items.products,
       cat: cat
     },{
@@ -117,13 +117,11 @@ export class MainPage {
           this.searched.push(product);
         }
       }
-      //console.log(this.searched,"first");
       for(let merchant of this.items.merchants){
         if(merchant.name.includes(ev.target.value)){
           this.searched.push(merchant);
         }
       }
-      //console.log(this.searched,"second");
     }
   }
 }

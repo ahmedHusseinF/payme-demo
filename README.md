@@ -1,26 +1,21 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
-## How to use this template
+## My Implementation:
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+1- the location is brought in real time the first you start browsing the main page.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+2- upper header buttons don't work for now.
 
-### With the Ionic CLI:
+3- the categories doesn't have icons because they are dynamically generated with the api call. TODO
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+4- add button at the bottom, useless.
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myTabs tabs
-```
+5- i created settings page and about to make 4 tabs and center circle.
 
-Then, to run it, cd into `myTabs` and run:
+6- settings don't work because it need some time.
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+### Plugins:
 
-Substitute ios for android if not on a Mac.
+I used this plugin in chrome to add to responses 'Access-Control-Allow-Origin' header, link below:
+
+[https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 
