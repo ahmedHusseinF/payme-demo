@@ -19,3 +19,10 @@ I used this plugin in chrome to add to responses 'Access-Control-Allow-Origin' h
 
 [https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 
+### TODOs:
+
+1- getting to change the theme dynamically, maybe store the theme in localstorage.
+
+2- make a list of countries to pick one to change app content
+
+3- align promotion cards, need to override ionic classes styles
