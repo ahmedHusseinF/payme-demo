@@ -80,7 +80,7 @@ export class MainPage {
         });
 
         this.hideLoading();
-    },3000);
+    },2000);
   }
 
   private hideLoading(){
