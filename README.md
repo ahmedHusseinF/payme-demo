@@ -26,3 +26,5 @@ I used this plugin in chrome to add to responses 'Access-Control-Allow-Origin' h
 2- make a list of countries to pick one to change app content
 
 3- align promotion cards, need to override ionic classes styles
+
+4- when pushing a page to navigate to ir, back button doesn't go back have to go back manually, look into that

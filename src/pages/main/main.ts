@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { HttpModule } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavController,LoadingController } from 'ionic-angular';
 import { fetchService } from '../../app/services/fetch.service';
