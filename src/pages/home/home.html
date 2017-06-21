@@ -20,16 +20,21 @@
     </ion-list>
     <div class="row">
       <div class="col">
-        <button ion-button outline block color= "danger" center (click)="login()" >Sign In</button>
+        <button ion-button outline block color= "danger" (click)="login()" >Sign In</button>
       </div>
+   </div>
+   <div *ngIf="err != ''">
+      <p>
+        {{err}}
+      </p>
    </div>
   </div>
   <div *ngIf="loggedIn">
-    
+
       <pre>
         Congratulations, You are logged in.
         Please go to the Main Area.
       </pre>
-    
+
   </div>
 </ion-content>

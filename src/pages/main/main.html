@@ -7,23 +7,28 @@
       </button>
     </ion-fab>
 
-    <!--<ion-item color="danger"><h1>Main Page</h1></ion-item> -->
     <ion-title>Main Page</ion-title>
     <ion-fab top right>
       <button ion-button clear color="light">
         <ion-icon name="notifications-outline"></ion-icon>
       </button>
     </ion-fab>
+
   </ion-navbar>
 
   <ion-item color="danger"><h1>{{location}}</h1></ion-item>
-  <!--(ionInput)="getItems($event)"-->
+
   <ion-item color="danger">
     <ion-searchbar (ionInput)="getItems($event)" (ionClear)="getItems('')" placeholder="Search for products, merchants etc." color="danger"></ion-searchbar>
   </ion-item>
 </ion-header>
 
 <ion-content padding overflow-scroll="true">
+  <ion-fab bottom center>
+    <button ion-fab color="danger">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
   <div *ngIf="!loggedIn">
     <pre>
       Sir, please go to the login page first and login.
@@ -41,20 +46,32 @@
               <p (click)="viewProducts(cat)">{{cat}}</p> <!-- can be a link to another page containing all products of this category -->
             </ion-col>
           </ion-row>
-
-          <p>Featured Items</p>
-          <ion-row>
-            <ion-col *ngFor="let prom of items.promotions">
-              <ion-card>
-                <img src="{{prom.image}}">
-                <ion-card-content>
-                  <ion-card-title>{{prom.title}}</ion-card-title>
-                  <p>{{prom.description}}</p>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
         </ion-scroll>
+
+        <h2>Featured Items</h2>
+        <ion-list>
+          <ion-item *ngFor="let prom of items.promotions">
+            <ion-thumbnail item-start>
+              <img src="{{prom.image}}">
+            </ion-thumbnail>
+            <h2>{{prom.title}}</h2>
+            <p>{{prom.description}}</p>
+            <button ion-button clear item-end>Details</button>
+          </ion-item>
+        </ion-list>
+
+        <h2>Merchants</h2>
+        <ion-list>
+          <ion-item *ngFor="let merch of items.merchants">
+            <ion-thumbnail item-start>
+              <img src="{{merch.logo}}">
+            </ion-thumbnail>
+            <h2>{{merch.name}}</h2>
+            <p>{{merch.description}}</p>
+            <button ion-button clear item-end>Details</button>
+          </ion-item>
+        </ion-list>
+
       </div>
 
 

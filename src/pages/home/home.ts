@@ -25,7 +25,8 @@ export class HomePage {
           this.storage.set('loggedIn',true);
           this.loggedIn = true;
         }else {
-          this.err = res.Message;
+          console.log(res.Message);
+          this.err = res.Message + ', please check your login credentials.';
         }
       });
   }
