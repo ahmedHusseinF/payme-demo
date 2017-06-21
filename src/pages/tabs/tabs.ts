@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ViewController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { MainPage } from '../main/main';
 import { HomePage } from '../home/home';
@@ -14,7 +14,7 @@ export class TabsPage {
   tab2Root = MainPage;
   tab3Root = SettingsPage;
   tab4Root = AboutPage;
-  constructor() {
-
+  constructor(public viewCtrl: ViewController) {
+    
   }
 }

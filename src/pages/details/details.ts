@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
+  selector: 'page-details',
   templateUrl: 'details.html'
 })
 export class DetailsPage {
@@ -12,6 +13,10 @@ export class DetailsPage {
     this.cat = param.get('cat');
     this.allProducts = param.get('products');
     this.getProductsByCat();
+  }
+
+  popView(){
+     this.navCtrl.pop();
   }
 
   getProductsByCat(){

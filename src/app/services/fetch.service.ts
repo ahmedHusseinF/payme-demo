@@ -24,6 +24,7 @@ export class fetchService{
     getLocation(lat,long){
         return this.http.get(this.locationUrl + "latlng=" + lat + "," + long)
         .map((res)=>{
+            console.log(res.json());
             return res.json();
         })
     }
