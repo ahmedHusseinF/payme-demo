@@ -3,11 +3,18 @@ ion-scroll {
     max-height: 150vh;
 }
 
+.cat{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    height: 100px;
+    max-height: 100px;
+}
+
 h1, h3{
     text-align: center;
 }
 
-#location ion-select{
-    position: relative;
-    margin: 0 0 0 50%;
+#addButton{
+    top:83%;
 }

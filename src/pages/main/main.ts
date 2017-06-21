@@ -41,9 +41,8 @@ export class MainPage {
       this.loggedIn = val;
     });
     setTimeout(()=>{
-      if(this.loggedIn){
+      if( this.loggedIn && this.items.products.length === 0 ){
         this.showLoading();
-        this.loggedIn = true;
       }else{
        return;
       }
@@ -73,8 +72,8 @@ export class MainPage {
                 //console.log(res);
                 this.items = res;
                 this.findCategories();
-                console.log(this.items,"64");
-                console.log(this.categories,"65");
+                //console.log(this.items,"64");
+                //console.log(this.categories,"65");
                 //console.log(this.items);
             });
         });

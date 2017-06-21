@@ -47,7 +47,10 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     Device,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler
+    }
   ]
 })
 export class AppModule {}

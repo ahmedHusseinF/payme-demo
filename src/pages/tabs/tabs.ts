@@ -15,6 +15,6 @@ export class TabsPage {
   tab3Root = SettingsPage;
   tab4Root = AboutPage;
   constructor(public viewCtrl: ViewController) {
-    console.log(this.viewCtrl.name);
+
   }
 }
